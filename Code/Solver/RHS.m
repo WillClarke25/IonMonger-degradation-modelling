@@ -56,7 +56,7 @@ fn = Kn*(Dx*n-mE.*(Av*n)); % electron current
 fnE = kE*KE*(AvE*nE).*(DxE*(SEinv(omegE*nE)-phiE)); % electron current in ETL
 fp = Kp*(Dx*p+mE.*(Av*p)); % negative hole current
 fpH = kH*KH*(AvH*pH).*(DxH*(SHinv(omegH*pH)+phiH)); % negative hole current in HTL
-GR = G(Av*x,t)-R(Av*n,Av*p,Av*P); % generation-recombination
+GR = G(Av*x,t)-R(Av*n,Av*p,Av*P,t); % generation-recombination
 
 % P equation
 dudt(1,:) = FP(1,:);
