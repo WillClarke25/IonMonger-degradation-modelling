@@ -154,7 +154,8 @@ SRH = @(n,p,gamma,ni2,tor,tor3) ...
       + gamma*(n-ni2./p)./(n./p+tor+tor3./p).*(tor*p>n).*(tor*p>tor3) ...
       + gamma*(p.*n-ni2)./(n+tor*p+tor3).*(tor3>n).*(tor3>=tor*p);
 % Total bulk recombination rate
-rec_fac_star = @(t) rec_fac(t*Tion);
+if isempty(rec_fac) ; rec_fac_star = @(t) ones(size(t))
+else rec_fac_star = @(t) rec_fac(t*Tion); end
 R = @(n,p,P,t) brate*(n.*p-ni2) ... % bimolecular
            + Auger(n,p,Cn,Cp,ni2) ... % Auger recombination
            + rec_fac_star(t).*SRH(n,p,gamma,ni2,tor,tor3); % SRH recombination via trap states
